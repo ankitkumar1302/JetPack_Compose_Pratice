@@ -5,9 +5,13 @@ import android.text.Selection
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.runtime.Composable
@@ -37,6 +41,8 @@ class MainActivity : ComponentActivity() {
 //            SelectableText()
 //            PartiallySelectedText()
 //            RowExample()
+//            ColumnExample()
+            LazyRowExample()
         }
     }
 }
@@ -115,21 +121,73 @@ fun PartiallySelectedText() {
     }
 }
 
-//@Composable
-//fun RowExample() {
-//    Row(
-//        modifier = Modifier
-//            .fillMaxWidth()
+@Composable
+fun RowExample() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .background(color = Color.Gray)
+            .horizontalScroll(rememberScrollState()),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(text = "first", fontSize = 30.sp)
+        Text(text = "JetPack", fontSize = 30.sp)
+        Text(text = "Compose", fontSize = 30.sp)
+        Text(text = "Hello", fontSize = 30.sp)
+        Text(text = "JetPack", fontSize = 30.sp)
+        Text(text = "Compose", fontSize = 30.sp)
+        Text(text = "JetPack", fontSize = 30.sp)
+        Text(text = "Compose", fontSize = 30.sp)
+        Text(text = "Hello", fontSize = 30.sp)
+        Text(text = "JetPack", fontSize = 30.sp)
+        Text(text = "Last", fontSize = 30.sp)
+    }
+}
+
+@Composable
+fun ColumnExample() {
+
+    Column(
+        modifier = Modifier
 //            .fillMaxHeight()
-//            .background(color = Color.Cyan),
-//            horizontalArrangement = Arrangement.Center,
-//        verticalAlignment = Alignment.CenterVertically
-//    ) {
-//        Text(text = "Hello", fontSize = 30.sp)
-//        Text(text = "JetPack", fontSize = 30.sp)
-//        Text(text = "Compose", fontSize = 30.sp)
-//    }
-//}
+//            .fillMaxWidth()
+            .fillMaxSize() //0.5f Fraction ke liya if karna ho to.
+            .background(color = Color.Gray)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "first", fontSize = 30.sp)
+        for (i in 0..100) {
+            Text(text = "Item is $i", fontSize = 30.sp)
+        }
+        Text(text = "Last", fontSize = 30.sp)
+    }
+}
+
+@Composable
+fun LazyRowExample() {
+
+    LazyRow(
+        modifier = Modifier
+            .background(color = Color.Gray)
+            .fillMaxHeight(),
+        verticalAlignment = Alignment.CenterVertically,
+        contentPadding = PaddingValues(horizontal = 100.dp),
+        horizontalArrangement = Arrangement.spacedBy(50.dp)
+    ) {
+        //Add single Item
+        item { Text(text = "First Item", fontSize = 30.sp) }
+        //Add a multiline Item
+        items(50) { i -> Text(text = " Item $i ", fontSize = 30.sp) }
+    }
+}
+@Composable
+fun LazyRowColumn(){
 
 
+
+}
 
