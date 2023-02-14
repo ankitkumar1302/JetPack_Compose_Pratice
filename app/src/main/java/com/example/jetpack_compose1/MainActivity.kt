@@ -130,6 +130,3 @@ fun RowExample() {
         Text(text = "Compose", fontSize = 30.sp)
     }
 }
-
-
-
