@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
 //            LongText()
 //            SelectableText()
 //            PartiallySelectedText()
-            RowExample()
+//            RowExample()
         }
     }
 }
@@ -115,21 +115,21 @@ fun PartiallySelectedText() {
     }
 }
 
-@Composable
-fun RowExample() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-            .background(color = Color.Cyan),
-            horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(text = "Hello", fontSize = 30.sp)
-        Text(text = "JetPack", fontSize = 30.sp)
-        Text(text = "Compose", fontSize = 30.sp)
-    }
-}
+//@Composable
+//fun RowExample() {
+//    Row(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .fillMaxHeight()
+//            .background(color = Color.Cyan),
+//            horizontalArrangement = Arrangement.Center,
+//        verticalAlignment = Alignment.CenterVertically
+//    ) {
+//        Text(text = "Hello", fontSize = 30.sp)
+//        Text(text = "JetPack", fontSize = 30.sp)
+//        Text(text = "Compose", fontSize = 30.sp)
+//    }
+//}
 
 
 
