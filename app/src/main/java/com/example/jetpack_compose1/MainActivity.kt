@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.DisableSelection
@@ -42,7 +43,8 @@ class MainActivity : ComponentActivity() {
 //            PartiallySelectedText()
 //            RowExample()
 //            ColumnExample()
-            LazyRowExample()
+//            LazyRowExample()
+            LazyRowColumn()
         }
     }
 }
@@ -182,12 +184,26 @@ fun LazyRowExample() {
         item { Text(text = "First Item", fontSize = 30.sp) }
         //Add a multiline Item
         items(50) { i -> Text(text = " Item $i ", fontSize = 30.sp) }
+        //Add a single Item
+        item { Text (text= "Last Item", fontSize = 30.sp) }
     }
 }
 @Composable
 fun LazyRowColumn(){
 
-
+    LazyColumn(
+        modifier = Modifier.background(color = Color.Gray)
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 100.dp)
+    ){
+        //Add single Item
+        item { Text(text = "First Item", fontSize = 30.sp) }
+        //Add a multiline Item
+        items(50) { i -> Text(text = " Item $i ", fontSize = 30.sp) }
+        //Add a single Item
+        item { Text (text= "Last Item", fontSize = 30.sp) }
+    }
 
 }
 
