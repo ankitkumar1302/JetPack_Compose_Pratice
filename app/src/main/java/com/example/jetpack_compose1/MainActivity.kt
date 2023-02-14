@@ -195,7 +195,8 @@ fun LazyRowColumn(){
         modifier = Modifier.background(color = Color.Gray)
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 100.dp)
+        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 100.dp),
+        verticalArrangement = Arrangement.spacedBy(50.dp)
     ){
         //Add single Item
         item { Text(text = "First Item", fontSize = 30.sp) }
