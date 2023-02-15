@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+
+
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
@@ -20,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.AlignmentLine
+import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -45,6 +48,10 @@ class MainActivity : ComponentActivity() {
 //            ColumnExample()
 //            LazyRowExample()
 //            LazyRowColumn()
+//            boxExample()
+            MaterialUiApp()
+
+
         }
     }
 }
@@ -185,46 +192,58 @@ fun LazyRowExample() {
         //Add a multiline Item
         items(50) { i -> Text(text = " Item $i ", fontSize = 30.sp) }
         //Add a single Item
-        item { Text (text= "Last Item", fontSize = 30.sp) }
+        item { Text(text = "Last Item", fontSize = 30.sp) }
     }
 }
-//@Composable
-//fun LazyRowColumn(){
-//
-//    LazyColumn(
-//        modifier = Modifier.background(color = Color.Gray)
-//            .fillMaxWidth(),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 100.dp),
-//        verticalArrangement = Arrangement.spacedBy(50.dp)
-//    ){
-//        //Add single Item
-//        item { Text(text = "First Item", fontSize = 30.sp) }
-//        //Add a multiline Item
-//        items(50) { i -> Text(text = " Item $i ", fontSize = 30.sp) }
-//        //Add a single Item
-//        item { Text (text= "Last Item", fontSize = 30.sp) }
-//    }
-//}
+
+@Composable
+fun LazyRowColumn() {
+
+    LazyColumn(
+        modifier = Modifier
+            .background(color = Color.Gray)
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 100.dp),
+        verticalArrangement = Arrangement.spacedBy(50.dp)
+    ) {
+        //Add single Item
+        item { Text(text = "First Item", fontSize = 30.sp) }
+        //Add a multiline Item
+        items(50) { i -> Text(text = " Item $i ", fontSize = 30.sp) }
+        //Add a single Item
+        item { Text(text = "Last Item", fontSize = 30.sp) }
+    }
+}
+
 @Composable
 fun boxExample() {
+
     Box(
         modifier = Modifier
-            .fillMaxHeight(0.5f)
-            .fillMaxWidth(0.5f)
             .background(color = Color.Yellow)
+            .fillMaxWidth(.5f)
+            .fillMaxHeight(.5f)
     ) {
-        Text(text = "This is outer box...")
+        Text(text = "This is outer box......")
         Box(
             modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .fillMaxHeight(0.5f)
-                .background(color = Color.Green)
-        )
-        Text(text = "Text here....")
+                .background(color = Color.Gray)
+                .fillMaxWidth(.5f)
+                .fillMaxHeight(.5f)
+        ) {
+            Text(
+                text = "This is inner box.....",
+                color = Color.Cyan,
+                modifier = Modifier.align(Alignment.Center),
+            )
+        }
+        Text(text = "This is box", color = Color.Red, modifier = Modifier.align(Alignment.Center))
     }
-    Text(
-        text = "other text....",
-        fontSize = 30.sp,
-    )
+}
+@Composable
+fun MaterialUiApp(){
+
+
+
 }
