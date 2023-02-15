@@ -206,3 +206,25 @@ fun LazyRowExample() {
 //        item { Text (text= "Last Item", fontSize = 30.sp) }
 //    }
 //}
+@Composable
+fun boxExample() {
+    Box(
+        modifier = Modifier
+            .fillMaxHeight(0.5f)
+            .fillMaxWidth(0.5f)
+            .background(color = Color.Yellow)
+    ) {
+        Text(text = "This is outer box...")
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(0.5f)
+                .fillMaxHeight(0.5f)
+                .background(color = Color.Green)
+        )
+        Text(text = "Text here....")
+    }
+    Text(
+        text = "other text....",
+        fontSize = 30.sp,
+    )
+}
