@@ -45,8 +45,6 @@ class MainActivity : ComponentActivity() {
 //            ColumnExample()
 //            LazyRowExample()
 //            LazyRowColumn()
-            boxExample()
-
         }
     }
 }
@@ -187,49 +185,24 @@ fun LazyRowExample() {
         //Add a multiline Item
         items(50) { i -> Text(text = " Item $i ", fontSize = 30.sp) }
         //Add a single Item
-        item { Text(text = "Last Item", fontSize = 30.sp) }
+        item { Text (text= "Last Item", fontSize = 30.sp) }
     }
 }
-
-@Composable
-fun LazyRowColumn() {
-
-    LazyColumn(
-        modifier = Modifier
-            .background(color = Color.Gray)
-            .fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 100.dp),
-        verticalArrangement = Arrangement.spacedBy(50.dp)
-    ) {
-        //Add single Item
-        item { Text(text = "First Item", fontSize = 30.sp) }
-        //Add a multiline Item
-        items(50) { i -> Text(text = " Item $i ", fontSize = 30.sp) }
-        //Add a single Item
-        item { Text(text = "Last Item", fontSize = 30.sp) }
-    }
-}
-
-@Composable
-fun boxExample() {
-    Box(
-        modifier = Modifier
-            .fillMaxHeight(0.5f)
-            .fillMaxWidth(0.5f)
-            .background(color = Color.Yellow)
-    ) {
-        Text(text = "This is outer box...")
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .fillMaxHeight(0.5f)
-                .background(color = Color.Green)
-        )
-        Text(text = "Text here....")
-    }
-    Text(
-        text = "other text....",
-        fontSize = 30.sp,
-    )
-}
+//@Composable
+//fun LazyRowColumn(){
+//
+//    LazyColumn(
+//        modifier = Modifier.background(color = Color.Gray)
+//            .fillMaxWidth(),
+//        horizontalAlignment = Alignment.CenterHorizontally,
+//        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 100.dp),
+//        verticalArrangement = Arrangement.spacedBy(50.dp)
+//    ){
+//        //Add single Item
+//        item { Text(text = "First Item", fontSize = 30.sp) }
+//        //Add a multiline Item
+//        items(50) { i -> Text(text = " Item $i ", fontSize = 30.sp) }
+//        //Add a single Item
+//        item { Text (text= "Last Item", fontSize = 30.sp) }
+//    }
+//}
