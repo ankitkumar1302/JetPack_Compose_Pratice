@@ -11,10 +11,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.typography
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -275,4 +278,26 @@ fun ImageInternetExample() {
             .size(300.dp)
             .clip(shape = CircleShape)
     )
+}
+@Composable
+fun IconExample() {
+    Icon(
+        Icons.Filled.Menu,
+        contentDescription = "Menu",
+        modifier = Modifier.size(50.dp),
+        tint = Color.Red
+    )
+}
+@Composable
+fun CardExample(){
+    Card(
+        shape = RoundedCornerShape(10.dp),
+        backgroundColor = Color.Gray,
+        border = BorderStroke(5.dp, Color.Red)
+    ) {
+        Column(modifier = Modifier.padding(40.dp)) {
+            Text(text = "This is Card....", fontSize = 30.sp, textAlign = TextAlign.Center)
+        }
+    }
+
 }
