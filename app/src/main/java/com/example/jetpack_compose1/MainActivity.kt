@@ -2,6 +2,7 @@ package com.example.jetpack_compose1
 
 import android.os.Bundle
 import android.text.Selection
+import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
@@ -19,6 +20,9 @@ import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,10 +36,13 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.createFontFamilyResolver
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.example.jetpack_compose1.ui.theme.MyFontFamily
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +63,13 @@ class MainActivity : ComponentActivity() {
 //            boxExample()
 //            MaterialUiApp()
 //            ImageAssetExample()
-            ImageInternetExample()
+//            ImageInternetExample()
+//            IconExample()
+//            CardExample()
+//            StatefulExample()
+//            HelloScreen()
+            ButtonsExample()
+
         }
     }
 }
@@ -265,6 +278,7 @@ fun ImageAssetExample() {
             .clip(shape = CircleShape)
     )
 }
+
 @Composable
 fun ImageInternetExample() {
     Image(
@@ -279,6 +293,7 @@ fun ImageInternetExample() {
             .clip(shape = CircleShape)
     )
 }
+
 @Composable
 fun IconExample() {
     Icon(
@@ -288,16 +303,57 @@ fun IconExample() {
         tint = Color.Red
     )
 }
+
 @Composable
-fun CardExample(){
+fun CardExample() {
     Card(
         shape = RoundedCornerShape(10.dp),
         backgroundColor = Color.Gray,
         border = BorderStroke(5.dp, Color.Red)
     ) {
         Column(modifier = Modifier.padding(40.dp)) {
-            Text(text = "This is Card....", fontSize = 30.sp, textAlign = TextAlign.Center)
+            Text(
+                text = "This is Card....",
+                fontSize = 30.sp,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(100.dp))
+            Text(
+                text = "Jetpack",
+                fontSize = 30.sp,
+                textAlign = TextAlign.Center,
+            )
         }
     }
+}
+
+@Composable
+fun StatefulExample() {
+    var name: String by remember { mutableStateOf("") }
+    Column {
+        OutlinedTextField(value = name, onValueChange = { name = it })
+        Text(text = name, fontSize = 30.sp)
+    }
+}
+
+//State Hosting
+@Composable
+fun HelloScreen() {
+    var name: String by remember { mutableStateOf("") }
+    HelloContent(name = name, onNameChange = { name = it })
+}
+
+@Composable
+fun HelloContent(name: String, onNameChange: (String) -> Unit) {
+    Column {
+        OutlinedTextField(value = name, onValueChange = onNameChange)
+        Text(text = name, fontSize = 30.sp)
+    }
+}
+
+@Composable
+fun ButtonsExample() {
+
+
 
 }
