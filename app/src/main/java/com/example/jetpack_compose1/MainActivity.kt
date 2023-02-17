@@ -2,6 +2,7 @@ package com.example.jetpack_compose1
 
 import android.os.Bundle
 import android.text.Selection
+import android.util.Log
 import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,6 +20,7 @@ import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,6 +45,7 @@ import coil.compose.rememberImagePainter
 import com.example.jetpack_compose1.ui.theme.MyFontFamily
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.TextStyle
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,8 +71,8 @@ class MainActivity : ComponentActivity() {
 //            CardExample()
 //            StatefulExample()
 //            HelloScreen()
-            ButtonsExample()
-
+//            ButtonsExample()
+            TextFieldExample()
         }
     }
 }
@@ -354,6 +357,53 @@ fun HelloContent(name: String, onNameChange: (String) -> Unit) {
 @Composable
 fun ButtonsExample() {
 
+    Column {
 
+        Button(
+            onClick = {
+                Log.d("Button", "Button Clicked")
+            },
+            modifier = Modifier.padding(30.dp),
+            contentPadding = PaddingValues(start = 40.dp, top = 20.dp, end = 40.dp, bottom = 20.dp),
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
+            shape = CircleShape,
+            border = BorderStroke(5.dp, Color.Blue)
+        ) {
+            Text(text = "Button", fontSize = 20.sp)
+        }
+    }
+}
+
+@Composable
+fun TextFieldExample() {
+
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+
+    ) {
+        item {
+            TextField(value = "",
+                onValueChange = {}, label = { Text(text = "Name") },
+                placeholder = { Text(text = "Write your Name") },
+                textStyle = TextStyle(color = Color.Blue),
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Person,
+                        contentDescription = ""
+
+                    )
+                },
+                shape = RoundedCornerShape(10.dp), colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Green, unfocusedIndicatorColor = Color.Transparent
+                ),
+//                readOnly = true,
+//                singleLine = true,
+            )
+        }
+//        item {  }
+    }
 
 }
