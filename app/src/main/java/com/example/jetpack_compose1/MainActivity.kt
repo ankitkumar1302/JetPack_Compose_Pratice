@@ -356,9 +356,7 @@ fun HelloContent(name: String, onNameChange: (String) -> Unit) {
 
 @Composable
 fun ButtonsExample() {
-
     Column {
-
         Button(
             onClick = {
                 Log.d("Button", "Button Clicked")
